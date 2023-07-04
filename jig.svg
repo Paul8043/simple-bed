@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg width="280.09mm" height="280.09mm" viewBox="-140.045 -140.045 280.09 280.09" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <g transform="scale(1,-1)" stroke-linecap="round">
+    <g fill="rgb(0,0,0)" stroke="rgb(0,0,0)" stroke-width="0.09" id="exterior">
+      <path d="M 120.0,-120.0 L 120.0,120.0 L -120.0,120.0 L -120.0,-120.0 L 120.0,-120.0" />
+    </g>
+    <g fill="rgb(255,255,255)" stroke="rgb(0,0,0)" stroke-width="0.09" id="interior">
+      <path d="M 55.0,-60.0 L -55.0,-60.0 A 5.0,5.0 0.0 1,0 -60.0,-55.0 L -60.0,55.0 A 5.0,5.0 0.0 1,0 -55.0,60.0 L 55.0,60.0 A 5.0,5.0 0.0 1,0 60.0,55.0 L 60.0,-55.0 A 5.0,5.0 0.0 1,0 55.0,-60.0" />
+      <circle cx="30.0" cy="-46.5" r="5.25" />
+      <circle cx="30.0" cy="46.5" r="5.25" />
+      <circle cx="-30.0" cy="46.5" r="5.25" />
+      <circle cx="-30.0" cy="-46.5" r="5.25" />
+    </g>
+    <g fill="none" stroke="rgb(127,127,127)" stroke-width="0.09" id="on-line">
+      <path d="M 130.0,-130.0 L 130.0,130.0 L -130.0,130.0 L -130.0,-130.0 L 130.0,-130.0" />
+      <path d="M 33.0,-33.0 L 33.0,33.0 L -33.0,33.0 L -33.0,-33.0 L 33.0,-33.0" />
+    </g>
+  </g>
+</svg>
