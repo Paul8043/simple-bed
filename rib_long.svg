@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg width="996.09mm" height="120.09mm" viewBox="-498.045 -60.045 996.09 120.09" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <g transform="scale(1,-1)" stroke-linecap="round">
+    <g fill="rgb(0,0,0)" stroke="rgb(0,0,0)" stroke-width="0.09" id="exterior">
+      <path d="M 478.0,-40.0 L 478.0,40.0 L -478.0,40.0 L -478.0,-40.0 L 478.0,-40.0" />
+    </g>
+    <g fill="rgb(255,255,255)" stroke="rgb(0,0,0)" stroke-width="0.09" id="interior">
+      <path d="M -462.0,-45.0 L -462.0,45.0 L -435.0,45.0 L -435.0,-45.0 L -462.0,-45.0" />
+      <path d="M 435.0,-45.0 L 435.0,45.0 L 462.0,45.0 L 462.0,-45.0 L 435.0,-45.0" />
+    </g>
+    <g fill="none" stroke="rgb(127,127,127)" stroke-width="0.09" id="on-line">
+      <path d="M 488.0,-50.0 L 488.0,50.0 L -488.0,50.0 L -488.0,-50.0 L 488.0,-50.0" />
+    </g>
+  </g>
+</svg>

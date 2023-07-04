@@ -12,6 +12,7 @@ license:
 
 from collections import namedtuple
 from build123d import *
+from build123d.exporters import *
 from ocp_vscode import show, show_object, reset_show, set_port, set_defaults, get_defaults
 
 set_port(3939)
@@ -141,12 +142,28 @@ def build_jamb_side(
     m2d_cut    = Sketch()+plate_fc-cut_fc
     m3d_full   = Part()+extrude(m2d_full,-0.5*thickness,both=True)  
     m3d_cut    = Part()+extrude(m2d_cut,-0.5*thickness,both=True)
-    m1d.export_svg("m1d_"+name+".svg",(0,0.5*length,1E6))
+
     #show_object(m1d,name="m1d_"+name,options={"alpha":0.2,"color":(25,25,25)})
     #show_object(m2d_full,name="m2d_full_"+name,options={"alpha":0.2,"color":(170,255,0)})
     #show_object(m2d_cut,name="m2d_cut_"+name,options={"alpha":0.2,"color":(170,255,0)})
     #show_object(m3d_full,name="m3d_full_"+name,options={"alpha":0.2,"color":(255,170,0)})
     #show_object(m3d_cut,name="m3d_cut_"+name,options={"alpha":0.2,"color":(255,170,0)})
+
+    svg = ExportSVG(margin=10)
+    white = (255,255,255)
+    black = (0,0,0)
+    gray = (127,127,127)
+    blue = (0,104,255)
+    svg.add_layer("exterior", line_color=black, fill_color=black)
+    svg.add_layer("pocketing", fill_color=gray)
+    svg.add_layer("interior", line_color=black, fill_color=white)
+    svg.add_layer("on-line", line_color=gray)
+    svg.add_layer("guide", line_color=blue)
+    svg.add_shape(border_pl.wires(), "on-line")
+    svg.add_shape(plate_pl.wires(), "exterior")
+    svg.add_shape(cut_pl.wires(), "interior")
+    svg.write(name+".svg")
+
     return m3d_full,m3d_cut
 
 def build_rib(
@@ -206,10 +223,27 @@ def build_rib(
     m3d_cut       -= Pos(0,0,+0.5*thickness)*m3d_cut_right
     m3d_cut       -= Pos(0,0,-0.5*thickness)*m3d_cut_left
     m3d_cut       -= Pos(0,0,-0.5*thickness)*m3d_cut_right
-    m1d.export_svg("m1d_"+name+".svg",(0,0.5*length,1E6))
+
     #show_object(m1d,name="m1d_"+name,options={"alpha":0.2,"color":(25,25,25)})
     #show_object(m3d_full,name="m3d_full_"+name,options={"alpha":0.2,"color":(255,170,0)})
     #show_object(m3d_cut,name="m3d_cut_"+name,options={"alpha":0.2,"color":(255,170,0)})
+
+    svg = ExportSVG(margin=10)
+    white = (255,255,255)
+    black = (0,0,0)
+    gray = (127,127,127)
+    blue = (0,104,255)
+    svg.add_layer("exterior", line_color=black, fill_color=black)
+    svg.add_layer("pocketing", fill_color=gray)
+    svg.add_layer("interior", line_color=black, fill_color=white)
+    svg.add_layer("on-line", line_color=gray)
+    svg.add_layer("guide", line_color=blue)
+    svg.add_shape(border_pl.wires(), "on-line")
+    svg.add_shape(plate_pl.wires(), "exterior")
+    svg.add_shape(cut_left_pl.wires(), "interior")
+    svg.add_shape(cut_right_pl.wires(), "interior")
+    svg.write(name+".svg")
+
     return m3d_cut
 
 def build_simple_bed(args):
@@ -423,8 +457,29 @@ def build_jig(name,measures):
     c19 =CenterArc(pts[19],0.5*d3,0,360)
     c20 =CenterArc(pts[20],0.5*d3,0,360)
     m1d = Curve()+[l1,l2,l3,l4,c17,c18,c19,c20]
-    m1d.export_svg("m1d_"+name+".svg",(0,0,1E6))
+    
     #show_object(m1d,name="m1d_"+name,options={"alpha":0.2,"color":(170,255,170)})
+
+    svg = ExportSVG(margin=10)
+    white = (255,255,255)
+    black = (0,0,0)
+    gray = (127,127,127)
+    blue = (0,104,255)
+    svg.add_layer("exterior", line_color=black, fill_color=black)
+    svg.add_layer("pocketing", fill_color=gray)
+    svg.add_layer("interior", line_color=black, fill_color=white)
+    svg.add_layer("on-line", line_color=gray)
+    svg.add_layer("guide", line_color=blue)
+    svg.add_shape(l1.wires(), "on-line")    # border
+    svg.add_shape(l2.wires(), "exterior")   # bearing
+    svg.add_shape(l3.wires(), "interior")   # jamb outide
+    svg.add_shape(l4.wires(), "on-line")    # jamb inside
+    svg.add_shape(c17.wires(), "interior")  # hole
+    svg.add_shape(c18.wires(), "interior")  # hole
+    svg.add_shape(c19.wires(), "interior")  # hole
+    svg.add_shape(c20.wires(), "interior")  # hole
+    svg.write(name+".svg")
+
     return m1d
 
 def dump(args) -> None:

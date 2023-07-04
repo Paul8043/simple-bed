@@ -2,6 +2,8 @@
 
 Simple Bed (Version for Build123d)
 
+![simple-bed](simple-bed.png)
+
 This same as /github.com/Paul8043/student-bed, but now ported to Build123d.
 
-Still under construction, SVG-exports need some additional work.
+All svg-files are generated with ExportSVG and made ready for SO.
